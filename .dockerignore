@@ -1,0 +1,5 @@
+.git
+.env
+backend/jobs
+**/__pycache__
+venv

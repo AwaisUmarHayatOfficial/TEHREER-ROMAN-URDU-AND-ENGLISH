@@ -1,0 +1,15 @@
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy app:6550
+}
+
+# Optional: phpMyAdmin on a sub-domain, protected by a password.
+# Create a hash with:  docker compose exec caddy caddy hash-password
+# Then uncomment (and add phpmyadmin to the same network - it already is):
+#
+# pma.{$DOMAIN} {
+# 	basicauth {
+# 		admin PASTE_HASH_HERE
+# 	}
+# 	reverse_proxy phpmyadmin:80
+# }

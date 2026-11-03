@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ - Tehreer</title>
+<meta name="description" content="Answers to common questions about Tehreer: cost, API keys, supported videos, privacy and troubleshooting.">
+<meta name="theme-color" content="#1f3a5f">
+<link rel="canonical" href="https://tehreer.com/faq">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tehreer">
+<meta property="og:title" content="FAQ - Tehreer">
+<meta property="og:description" content="Answers to common questions about Tehreer: cost, API keys, supported videos, privacy and troubleshooting.">
+<meta property="og:url" content="https://tehreer.com/faq">
+<meta property="og:image" content="https://tehreer.com/static/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css?v=478c70db">
+<link rel="stylesheet" href="/static/themes.css?v=478c70db">
+<script>(function(){try{var t=localStorage.getItem("site_theme");if(/^t[2-5]$/.test(t)){document.documentElement.setAttribute("data-theme",t);var F={t2:"family=Plus+Jakarta+Sans:wght@400;500;600;700;800",t4:"family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700",t5:"family=Sora:wght@500;600;700&family=DM+Sans:wght@400;500;600;700"};if(F[t]){var l=document.createElement("link");l.id="theme-fonts";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?"+F[t]+"&display=swap";document.head.appendChild(l)}}}catch(e){}})();</script>
+<script src="/static/config.js?v=478c70db" defer></script>
+<script src="/static/site.js?v=478c70db" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="site-util"></div>
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>Frequently asked questions</h1>
+    <p>Can't find your answer? <a href="/contact">Contact us</a>.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+  <div class="wrap narrow faq">
+    <details><summary>Is it free?</summary><p>The tool is free to use. It runs on your own Google Gemini API key, which has a free tier subject to Google's quotas and rate limits. Check Google's current pricing for details.</p></details><details><summary>Where do I get a Gemini API key?</summary><p>Open aistudio.google.com/apikey, sign in with your Google account, click Create API key and copy the key. Keep it private.</p></details><details><summary>Do you store my API key?</summary><p>No. The key is sent to the server for your job, passed to the conversion process and used only to call Google's Gemini API. It is not written to disk or to logs. If you tick &ldquo;Remember the key in this browser&rdquo;, it is saved in your own browser's local storage only, and you can clear it any time by unticking the box and starting a new job.</p></details><details><summary>Which languages can I choose?</summary><p>English or Roman Urdu. You pick one on the tool page before each conversion. English notes are written in clear English even if the lecture is in Urdu or Hindi, and Roman Urdu notes are written in Roman Urdu (Urdu in Latin letters).</p></details><details><summary>Does it summarise the video?</summary><p>No. It converts the transcript sentence by sentence, then organises it into headings, lists, tables and callouts. A word-count check retries any chunk that comes back too short.</p></details><details><summary>Which videos work?</summary><p>Videos with Urdu, Hindi or English captions, manual or automatic. Videos with captions disabled cannot be converted.</p></details><details><summary>It says no subtitles were found. What can I do?</summary><p>The video may be a live stream, may have captions disabled, or YouTube may have temporarily refused the request. Wait for a live stream to finish (captions can take hours) or try a different video.</p></details><details><summary>How long does a conversion take?</summary><p>It depends on the video length, Gemini's rate limits and how busy the server is. A video is converted in chunks of about five minutes, so long lectures take proportionally longer.</p></details><details><summary>My job shows a warning about failed chunks.</summary><p>A chunk can fail when Gemini is rate limited or returns an error. The rest of the notes are still produced. You can try again a little later to get a complete version.</p></details><details><summary>How long are my files kept?</summary><p>Finished files are deleted from the server automatically after 24 hours. Your conversion history (video, title, status and date) stays in your account for 90 days, and you can delete any entry or your whole account at any time from the Account page.</p></details><details><summary>The Word document shows a different font.</summary><p>The document uses the font Roboto Serif. If it is not installed on your computer, Word substitutes another font. You can install Roboto Serif from Google Fonts.</p></details><details><summary>Why do I need to sign in?</summary><p>Your account keeps your conversions separate from everyone else's, shows your history and lets you download your files again later. You can continue with Google, or create an account with your Gmail address and a password.</p></details><details><summary>I did not receive the verification code.</summary><p>Check your spam or promotions folder, make sure the address is typed correctly and wait a minute before asking for a new code. The code is valid for 10 minutes.</p></details><details><summary>I forgot my password.</summary><p>Choose Forgot password on the sign-in page. We e-mail a 6-digit code to your Gmail address and you can set a new password.</p></details><details><summary>Why only Gmail addresses?</summary><p>Confirming a Gmail address (or signing in with Google) shows that every account belongs to a real person, and it keeps temporary e-mail services out.</p></details><details><summary>Can I delete my account?</summary><p>Yes. Open the Account page and choose Delete account. Your profile, history and generated files are removed permanently.</p></details><details><summary>Can I use it for any video?</summary><p>Please only convert videos you have the right to use, and respect YouTube's terms of service and the rights of content creators. Transcripts are sent to Google's Gemini API for conversion.</p></details>
+  </div>
+</section>
+<section class="cta-dark">
+  <div class="wrap narrow">
+    <h2>Ready to turn your next lecture into notes?</h2>
+    <p>Bring a YouTube link with captions and your own Gemini key. The Word file is ready when the progress bar reaches 100%.</p>
+    <a class="btn gold lg" href="/app">Start converting</a>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+</body>
+</html>

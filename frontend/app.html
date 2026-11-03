@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes tool - Tehreer</title>
+<meta name="description" content="Convert a YouTube video to study notes in English or Roman Urdu. Choose the language, enter your Gemini key and the video link, watch progress live and download the files.">
+<meta name="theme-color" content="#1f3a5f">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tehreer">
+<meta property="og:title" content="Notes tool - Tehreer">
+<meta property="og:description" content="Convert a YouTube video to study notes in English or Roman Urdu. Choose the language, enter your Gemini key and the video link, watch progress live and download the files.">
+<meta property="og:url" content="https://tehreer.com/app">
+<meta property="og:image" content="https://tehreer.com/static/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css?v=478c70db">
+<link rel="stylesheet" href="/static/themes.css?v=478c70db">
+<script>(function(){try{var t=localStorage.getItem("site_theme");if(/^t[2-5]$/.test(t)){document.documentElement.setAttribute("data-theme",t);var F={t2:"family=Plus+Jakarta+Sans:wght@400;500;600;700;800",t4:"family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700",t5:"family=Sora:wght@500;600;700&family=DM+Sans:wght@400;500;600;700"};if(F[t]){var l=document.createElement("link");l.id="theme-fonts";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?"+F[t]+"&display=swap";document.head.appendChild(l)}}}catch(e){}})();</script>
+<script src="/static/config.js?v=478c70db" defer></script>
+<script src="/static/site.js?v=478c70db" defer></script>
+</head>
+<body data-auth="required">
+<a class="skip" href="#main">Skip to content</a>
+<div id="site-util"></div>
+<div id="site-header"></div>
+<noscript><p class="noscript">This site needs JavaScript for the menu and the notes tool. Please enable it and reload.</p></noscript>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>Notes tool</h1>
+    <p>Choose a language, convert a YouTube video into study notes and download the Word and text files when it finishes.</p>
+  </div>
+</section>
+
+<div class="wrap app-grid">
+  <div>
+    <ol class="stepper" aria-label="Steps">
+      <li id="stp1" class="on"><span>1</span>Enter details</li>
+      <li id="stp2"><span>2</span>Convert</li>
+      <li id="stp3"><span>3</span>Download</li>
+    </ol>
+    <section id="formCard" class="card" aria-labelledby="formTitle">
+      <h2 id="formTitle">New video</h2>
+      <div id="langChooser" class="lang-chooser" role="radiogroup" aria-labelledby="langLabel">
+        <p id="langLabel" class="lang-q">Which language should your notes be in?</p>
+        <div class="lang-options">
+          <button type="button" class="lang-opt" role="radio" aria-checked="false" data-lang="english">
+            <span class="lang-name">English</span>
+            <span class="lang-sub">Clear English notes, even if the lecture is in Urdu or Hindi</span>
+          </button>
+          <button type="button" class="lang-opt" role="radio" aria-checked="false" data-lang="roman_urdu">
+            <span class="lang-name">Roman Urdu</span>
+            <span class="lang-sub">Notes in Urdu written with English letters</span>
+          </button>
+        </div>
+        <p id="langHint" class="fine">Choose one to continue.</p>
+      </div>
+      <form id="jobForm" novalidate hidden>
+        <p class="lang-picked">Notes language: <b id="langPicked"></b> <button type="button" id="langChange" class="linkbtn">Change</button></p>
+        <div class="field">
+          <label for="apiKey">Gemini API key</label>
+          <div class="input-row">
+            <input id="apiKey" type="password" autocomplete="off" spellcheck="false" placeholder="AIza... or AQ...." required>
+            <button type="button" id="toggleKey" class="ghost" aria-pressed="false">Show</button>
+          </div>
+          <label class="check"><input type="checkbox" id="rememberKey"> Remember the key in this browser (cleared when you sign out)</label>
+        </div>
+
+        <div class="field">
+          <label for="videoUrl">YouTube video link</label>
+          <div class="input-row">
+            <input id="videoUrl" type="url" inputmode="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=..." required>
+            <button type="button" id="pasteBtn" class="ghost">Paste</button>
+          </div>
+        </div>
+
+        <p id="formError" class="error" role="alert" hidden></p>
+        <button type="submit" id="startBtn" class="primary">Create notes</button>
+      </form>
+
+      <details class="help">
+        <summary>How do I get a Gemini API key?</summary>
+        <ol>
+          <li>Open <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> and sign in with your Google account.</li>
+          <li>Click <b>Create API key</b> and pick a project (or let it create a new one).</li>
+          <li>Copy the key that appears and paste it above.</li>
+        </ol>
+        <p>The key is free, but Google's quota limits apply. Long videos can take a while.</p>
+      </details>
+
+      <p class="privacy">Your key is sent to Google's Gemini API only while the conversion runs. It is never saved or logged on our server. Gemini processes the video transcript. See the <a href="/privacy">privacy policy</a> and <a href="/security">security</a> page.</p>
+    </section>
+
+    <section id="jobCard" class="card" hidden aria-labelledby="jobTitle" aria-live="polite">
+      <div class="job-head">
+        <div>
+          <h2 id="jobTitle">Converting</h2>
+          <div class="job-meta"><span id="jobLang" class="lang-badge" hidden></span><p id="videoTitle" class="muted"></p></div>
+        </div>
+        <div class="pct" id="pctBig" aria-hidden="true">0%</div>
+      </div>
+
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="stageText" id="bar">
+        <div class="bar-fill" id="barFill"></div>
+      </div>
+      <p class="stage"><span id="stageText">Waiting in the queue...</span> <span id="elapsed" class="muted"></span></p>
+
+      <div id="chunkWrap" hidden>
+        <p class="label">Chunks (about 5 minutes of video each)</p>
+        <div id="chunks" class="chunks"></div>
+        <ul class="legend">
+          <li><i class="c done"></i>Done</li>
+          <li><i class="c active"></i>In progress</li>
+          <li><i class="c failed"></i>Failed</li>
+          <li><i class="c pending"></i>Waiting</li>
+        </ul>
+      </div>
+
+      <p id="jobWarn" class="warn" hidden></p>
+      <p id="jobError" class="error" role="alert" hidden></p>
+
+      <div class="actions" id="actions">
+        <button type="button" id="cancelBtn" class="ghost danger">Cancel</button>
+        <a id="dlDocx" class="primary btn" hidden>Download Word file (.docx)</a>
+        <a id="dlTxt" class="secondary btn" hidden>Download text file (.txt)</a>
+        <button type="button" id="newBtn" class="ghost" hidden>New video</button>
+      </div>
+
+      <details class="logs" id="logsBox" open>
+        <summary>Logs</summary>
+        <pre id="logs" tabindex="0" aria-label="Job logs"></pre>
+      </details>
+    </section>
+  </div>
+
+  <aside class="side" aria-label="Tool information">
+    <div class="card">
+      <h3>Your account</h3>
+      <p class="fine" style="margin:0 0 8px">Signed in as <b id="whoami">...</b></p>
+      <a class="more" href="/account">My conversions</a>
+    </div>
+    <div class="card">
+      <h3>Server status</h3>
+      <p class="status"><span class="dot" aria-hidden="true"></span><span id="serverStatus">Checking...</span></p>
+    </div>
+    <div class="card">
+      <h3>Before you start</h3>
+      <ul>
+        <li>The video must have captions (manual or automatic).</li>
+        <li>Live streams usually have no captions until they end.</li>
+        <li>Use the full video link from the address bar or the Share button.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Good to know</h3>
+      <ul>
+        <li>Long videos take longer, because they are converted in 5-minute chunks.</li>
+        <li>You can leave the page open or come back; the job continues on the server.</li>
+        <li>Files are kept for 24 hours. Your history stays in your account.</li>
+      </ul>
+      <p class="fine" style="margin:10px 0 0">Need help? <a href="/faq">Read the FAQ</a> or <a href="/contact">contact us</a>.</p>
+    </div>
+  </aside>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<script src="/static/app.js?v=478c70db" defer></script>
+</body>
+</html>

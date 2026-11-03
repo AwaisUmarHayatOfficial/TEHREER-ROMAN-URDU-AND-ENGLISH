@@ -1,0 +1,94 @@
+# App + MySQL + phpMyAdmin + Caddy (automatic HTTPS).
+# Run:  docker compose up -d --build
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-change-this-root-password}
+      MYSQL_DATABASE: tehreer
+      MYSQL_USER: ${DB_USER:-tehreer}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-change-this-db-password}
+      TZ: UTC
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./tehreer.sql:/docker-entrypoint-initdb.d/tehreer.sql:ro   # creates the tables on first start
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  phpmyadmin:                     # database dashboard - reachable only from this machine (127.0.0.1)
+    image: phpmyadmin:5
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: "3306"
+      UPLOAD_LIMIT: 64M
+      MEMORY_LIMIT: 256M
+    ports:
+      - "127.0.0.1:${PMA_PORT:-8081}:80"
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      TRUST_PROXY: "1"
+      PUBLIC_URL: ${PUBLIC_URL:-}
+      BRAND: ${BRAND:-Tehreer}
+      SECRET_KEY: ${SECRET_KEY:-}
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: tehreer
+      DB_USER: ${DB_USER:-tehreer}
+      DB_PASSWORD: ${DB_PASSWORD:-change-this-db-password}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+      ALLOW_DEV_CODES: ${ALLOW_DEV_CODES:-0}
+      ALLOWED_EMAIL_DOMAINS: ${ALLOWED_EMAIL_DOMAINS:-gmail.com,googlemail.com}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI:-}
+      PASSWORD_MIN_LENGTH: ${PASSWORD_MIN_LENGTH:-10}
+      MAX_LOGIN_FAILURES: ${MAX_LOGIN_FAILURES:-5}
+      LOCK_MINUTES: ${LOCK_MINUTES:-15}
+      MAX_CONCURRENT_JOBS: ${MAX_CONCURRENT_JOBS:-2}
+      MAX_ACTIVE_PER_USER: ${MAX_ACTIVE_PER_USER:-1}
+      MAX_JOBS_PER_DAY_PER_USER: ${MAX_JOBS_PER_DAY_PER_USER:-20}
+      JOB_TTL_HOURS: ${JOB_TTL_HOURS:-24}
+      MAX_JOB_MINUTES: ${MAX_JOB_MINUTES:-180}
+    volumes:
+      - jobs:/data/jobs
+    expose:
+      - "6550"
+
+  caddy:                # automatic HTTPS (Let's Encrypt)
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [app]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in .env}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  jobs:
+  dbdata:
+  caddy_data:
+  caddy_config:

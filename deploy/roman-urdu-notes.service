@@ -1,0 +1,18 @@
+# /etc/systemd/system/roman-urdu-notes.service
+[Unit]
+Description=Roman Urdu Notes web app
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/opt/yt-roman-urdu-web
+EnvironmentFile=/opt/yt-roman-urdu-web/.env
+Environment=TRUST_PROXY=1
+Environment=PROXY_IP_HEADER=x-client-ip
+Environment=JOBS_DIR=/var/lib/roman-urdu-notes/jobs
+StateDirectory=roman-urdu-notes
+ExecStart=/opt/yt-roman-urdu-web/venv/bin/uvicorn backend.main:app --host 127.0.0.1 --port 6550 --workers 1 --proxy-headers
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My account - Tehreer</title>
+<meta name="description" content="Your Tehreer profile, conversion history and downloads.">
+<meta name="theme-color" content="#1f3a5f">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tehreer">
+<meta property="og:title" content="My account - Tehreer">
+<meta property="og:description" content="Your Tehreer profile, conversion history and downloads.">
+<meta property="og:url" content="https://tehreer.com/account">
+<meta property="og:image" content="https://tehreer.com/static/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css?v=478c70db">
+<link rel="stylesheet" href="/static/themes.css?v=478c70db">
+<script>(function(){try{var t=localStorage.getItem("site_theme");if(/^t[2-5]$/.test(t)){document.documentElement.setAttribute("data-theme",t);var F={t2:"family=Plus+Jakarta+Sans:wght@400;500;600;700;800",t4:"family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700",t5:"family=Sora:wght@500;600;700&family=DM+Sans:wght@400;500;600;700"};if(F[t]){var l=document.createElement("link");l.id="theme-fonts";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?"+F[t]+"&display=swap";document.head.appendChild(l)}}}catch(e){}})();</script>
+<script src="/static/config.js?v=478c70db" defer></script>
+<script src="/static/site.js?v=478c70db" defer></script>
+</head>
+<body data-auth="required">
+<a class="skip" href="#main">Skip to content</a>
+<div id="site-util"></div>
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>My account</h1>
+    <p>Your conversions, downloads, profile and password in one place.</p>
+  </div>
+</section>
+
+<div class="wrap app-grid">
+  <div>
+    <section class="card" aria-labelledby="histTitle">
+      <div class="card-head">
+        <h2 id="histTitle">Your conversions</h2>
+        <a class="btn primary" href="/app">New conversion</a>
+      </div>
+      <p id="historyNote" class="fine"></p>
+      <div id="historyList" class="history" aria-live="polite"><p class="muted">Loading...</p></div>
+    </section>
+  </div>
+
+  <aside class="side" aria-label="Account settings">
+    <section class="card">
+      <h3>Profile</h3>
+      <form id="profileForm" novalidate>
+        <label for="pfirst">First name</label><input id="pfirst" type="text" maxlength="60" autocomplete="given-name">
+        <label for="plast" style="margin-top:10px">Last name</label><input id="plast" type="text" maxlength="60" autocomplete="family-name">
+        <label for="pphone" style="margin-top:10px">Phone</label><input id="pphone" type="tel" autocomplete="tel">
+        <p class="fine" style="margin:10px 0 2px">Gmail: <b id="pemail">...</b></p>
+        <p class="fine" style="margin:0 0 2px">Username: <b id="puser">...</b></p>
+        <p class="fine" style="margin:0 0 12px">Member since <span id="psince">...</span></p>
+        <p id="profileError" class="error" role="alert" hidden></p>
+        <button type="submit" class="primary">Save</button>
+        <span id="pmsg" class="fine" role="status"></span>
+      </form>
+    </section>
+    <section class="card" id="passwordCard">
+      <h3>Password</h3>
+      <div id="pwNone" hidden>
+        <p class="fine">This account signs in with Google and has no password yet. You can add one with a code we e-mail you.</p>
+        <a class="btn ghost sm" href="/forgot-password">Set a password</a>
+      </div>
+      <form id="pwForm" hidden novalidate>
+        <label for="curpw">Current password</label><input id="curpw" type="password" autocomplete="current-password">
+        <label for="newpw" style="margin-top:10px">New password</label><input id="newpw" type="password" autocomplete="new-password">
+        <p class="fine" style="margin:6px 0 10px">At least 10 characters with upper and lower case letters, a number and a symbol.</p>
+        <p id="pwError" class="error" role="alert" hidden></p>
+        <button type="submit" class="ghost">Change password</button>
+        <span id="pwMsg" class="fine" role="status"></span>
+      </form>
+    </section>
+    <section class="card">
+      <h3>Session</h3>
+      <button type="button" id="logoutBtn" class="ghost">Sign out</button>
+    </section>
+    <section class="card">
+      <h3>Delete account</h3>
+      <p class="fine">Permanently removes your profile, history and generated files. This cannot be undone.</p>
+      <details class="help">
+        <summary>I want to delete my account</summary>
+        <div id="delPwWrap" hidden>
+          <label for="delPw" style="margin-top:10px">Your password</label>
+          <input id="delPw" type="password" autocomplete="current-password">
+        </div>
+        <label for="delConfirm" style="margin-top:10px">Type DELETE to confirm</label>
+        <input id="delConfirm" type="text" autocomplete="off" placeholder="DELETE">
+        <p id="delError" class="error" role="alert" hidden style="margin-top:10px"></p>
+        <button type="button" id="delBtn" class="ghost danger" style="margin-top:10px">Delete everything</button>
+      </details>
+    </section>
+  </aside>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<script src="/static/auth.js?v=478c70db" defer></script>
+</body>
+</html>

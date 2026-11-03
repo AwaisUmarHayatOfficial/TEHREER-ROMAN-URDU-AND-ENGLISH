@@ -1,0 +1,11 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+requests>=2.31
+python-docx
+google-genai
+youtube-transcript-api
+yt-dlp
+PyMySQL>=1.1
+cryptography>=42
+argon2-cffi>=23.1
+google-auth>=2.30

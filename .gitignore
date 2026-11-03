@@ -1,0 +1,7 @@
+.env
+venv/
+jobs/
+__pycache__/
+*.docx
+*.txt
+!backend/requirements.txt

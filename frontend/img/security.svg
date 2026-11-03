@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" fill="none" font-family="Arial, Helvetica, sans-serif">
+<defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a4d7c"/><stop offset="1" stop-color="#13233f"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0ad4a"/><stop offset="1" stop-color="#b8862b"/></linearGradient>
+<filter id="s" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#16294a" flood-opacity=".22"/></filter></defs>
+<rect width="480" height="360" rx="18" fill="#e6eef9"/>
+<circle cx="240" cy="180" r="140" fill="#fff" opacity=".55"/><circle cx="240" cy="180" r="98" fill="#fff" opacity=".7"/>
+<path d="M104 180H190M290 180H376" stroke="#9fb1c9" stroke-width="2" stroke-dasharray="6 6"/>
+<g filter="url(#s)"><rect x="24" y="130" width="110" height="100" rx="12" fill="#fff"/></g>
+<rect x="38" y="146" width="82" height="16" rx="4" fill="#1f3a5f"/><rect x="38" y="168" width="82" height="16" rx="4" fill="#c8d0dc"/><rect x="38" y="190" width="50" height="16" rx="4" fill="#c8d0dc"/>
+<text x="79" y="248" text-anchor="middle" font-size="11" font-weight="700" fill="#1f3a5f">Your browser</text>
+<g filter="url(#s)"><rect x="346" y="130" width="110" height="100" rx="12" fill="#fff"/></g>
+<circle cx="372" cy="156" r="5" fill="#2e7d4f"/><rect x="384" y="152" width="56" height="8" rx="4" fill="#c8d0dc"/>
+<circle cx="372" cy="180" r="5" fill="#2e7d4f"/><rect x="384" y="176" width="56" height="8" rx="4" fill="#c8d0dc"/>
+<circle cx="372" cy="204" r="5" fill="#b8862b"/><rect x="384" y="200" width="56" height="8" rx="4" fill="#c8d0dc"/>
+<text x="401" y="248" text-anchor="middle" font-size="11" font-weight="700" fill="#1f3a5f">Google Gemini</text>
+<g filter="url(#s)"><path d="M240 62l76 28v62c0 46-31 84-76 100-45-16-76-54-76-100V90l76-28z" fill="url(#sg)"/></g>
+<rect x="212" y="158" width="56" height="44" rx="8" fill="url(#gold)"/><path d="M222 158v-12a18 18 0 0 1 36 0v12" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="240" cy="180" r="5" fill="#fff"/><rect x="238" y="182" width="4" height="10" rx="2" fill="#fff"/>
+<rect x="196" y="300" width="88" height="26" rx="13" fill="#fff" stroke="#c3cedd"/><text x="240" y="317" text-anchor="middle" font-size="12" font-weight="700" fill="#2e7d4f">HTTPS</text>
+</svg>

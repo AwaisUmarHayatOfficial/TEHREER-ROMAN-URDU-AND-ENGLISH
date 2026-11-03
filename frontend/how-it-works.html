@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works - Tehreer</title>
+<meta name="description" content="See how Tehreer turns a YouTube video into formatted notes in English or Roman Urdu, step by step.">
+<meta name="theme-color" content="#1f3a5f">
+<link rel="canonical" href="https://tehreer.com/how-it-works">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tehreer">
+<meta property="og:title" content="How it works - Tehreer">
+<meta property="og:description" content="See how Tehreer turns a YouTube video into formatted notes in English or Roman Urdu, step by step.">
+<meta property="og:url" content="https://tehreer.com/how-it-works">
+<meta property="og:image" content="https://tehreer.com/static/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css?v=478c70db">
+<link rel="stylesheet" href="/static/themes.css?v=478c70db">
+<script>(function(){try{var t=localStorage.getItem("site_theme");if(/^t[2-5]$/.test(t)){document.documentElement.setAttribute("data-theme",t);var F={t2:"family=Plus+Jakarta+Sans:wght@400;500;600;700;800",t4:"family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700",t5:"family=Sora:wght@500;600;700&family=DM+Sans:wght@400;500;600;700"};if(F[t]){var l=document.createElement("link");l.id="theme-fonts";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?"+F[t]+"&display=swap";document.head.appendChild(l)}}}catch(e){}})();</script>
+<script src="/static/config.js?v=478c70db" defer></script>
+<script src="/static/site.js?v=478c70db" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="site-util"></div>
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>How it works</h1>
+    <p>A short tour of what happens between pasting a link and downloading your notes.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px">
+  <div class="wrap narrow">
+    <ol class="steps long">
+      <li><h3>Fetch the transcript</h3><p>The subtitles of the video are downloaded (Urdu, Hindi or English, manual or automatic) and grouped into one-minute blocks, each keeping its timestamp.</p></li>
+      <li><h3>Split into chunks</h3><p>The minutes are grouped into chunks of about five minutes. Smaller chunks make it far less likely that the AI skips anything.</p></li>
+      <li><h3>Convert with Gemini</h3><p>Each chunk is sent to Google Gemini with strict instructions: write every sentence in the language you chose (clear English, or Roman Urdu), do not summarise, do not merge, do not skip, and organise the result into headings, lists, tables and callout boxes.</p></li>
+      <li><h3>Check and retry</h3><p>The number of words in the output is compared with the source. A chunk that falls below the coverage threshold is retried, and if needed split into smaller parts and converted again. If one model is rate limited, the next available model is tried.</p></li>
+      <li><h3>Build the document</h3><p>The text is cleaned up and rendered into a styled Word document with a header and footer, coloured callouts, tables, bolded key terms, clickable timestamps and an outline at the end. A plain text copy is saved too.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="wrap split">
+    <div class="split-text prose">
+      <h2>What you need</h2>
+      <ul>
+        <li><b>A free account.</b> Continue with Google, or register with your Gmail address and a password.</li>
+        <li><b>A YouTube video with captions.</b> Automatic captions are fine. Live streams usually get captions only after they end.</li>
+        <li><b>A free Google Gemini API key.</b> Open <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>, sign in, choose <i>Create API key</i> and copy the key.</li>
+      </ul>
+      <h2>What affects the speed</h2>
+      <ul>
+        <li><b>Video length.</b> A longer video means more chunks to convert.</li>
+        <li><b>Gemini limits.</b> Free keys have rate limits. When they are reached the tool waits and retries automatically.</li>
+        <li><b>Queue.</b> To keep things fair, only a limited number of jobs run at once. If the server is busy your job waits and shows its position.</li>
+      </ul>
+      <p>Questions about a specific case? The <a href="/faq">FAQ</a> covers the most common ones.</p>
+    </div>
+    <div class="split-art"><svg class="art" role="img" aria-label="A progress card showing 64 percent complete with a strip of chunks." focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" fill="none" font-family="Arial, Helvetica, sans-serif"><defs><linearGradient id="bg-9"><stop offset="0" style="stop-color:var(--c-e6eef9,#e6eef9)"/><stop offset="1" style="stop-color:var(--c-f8fafc,#f8fafc)"/></linearGradient>
+<linearGradient id="gold-9"><stop offset="0" style="stop-color:var(--c-e0ad4a,#e0ad4a)"/><stop offset="1" style="stop-color:var(--c-b8862b,#b8862b)"/></linearGradient>
+<filter id="s-9" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#16294a" flood-opacity=".18"/></filter></defs>
+<rect width="360" height="240" rx="14" fill="url(#bg-9)"/><g filter="url(#s-9)"><rect x="40" y="22" width="280" height="196" rx="12" fill="#fff"/></g>
+<text x="60" y="64" font-size="32" font-weight="700" font-family="Georgia, serif" style="fill:var(--c-1f3a5f,#1f3a5f)">64%</text>
+<text x="300" y="62" text-anchor="end" font-size="11" style="fill:var(--c-5f6b7a,#5f6b7a)">Converting chunk 8 of 24</text>
+<rect x="60" y="82" width="240" height="10" rx="5" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="60" y="82" width="154" height="10" rx="5" fill="url(#gold-9)"/>
+<text x="60" y="118" font-size="10.5" font-weight="700" style="fill:var(--c-1a2433,#1a2433)">Chunks</text><rect x="60" y="130" width="16" height="16" rx="3" style="fill:var(--c-2e7d4f,#2e7d4f)"/><rect x="80" y="130" width="16" height="16" rx="3" style="fill:var(--c-2e7d4f,#2e7d4f)"/><rect x="100" y="130" width="16" height="16" rx="3" style="fill:var(--c-2e7d4f,#2e7d4f)"/><rect x="120" y="130" width="16" height="16" rx="3" style="fill:var(--c-2e7d4f,#2e7d4f)"/><rect x="140" y="130" width="16" height="16" rx="3" style="fill:var(--c-2e7d4f,#2e7d4f)"/><rect x="160" y="130" width="16" height="16" rx="3" style="fill:var(--c-2e7d4f,#2e7d4f)"/><rect x="180" y="130" width="16" height="16" rx="3" style="fill:var(--c-2e7d4f,#2e7d4f)"/><rect x="200" y="130" width="16" height="16" rx="3" style="fill:var(--c-b8862b,#b8862b)"/><rect x="220" y="130" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="240" y="130" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="260" y="130" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="280" y="130" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="60" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="80" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="100" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="120" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="140" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="160" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="180" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="200" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="220" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="240" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="260" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/><rect x="280" y="152" width="16" height="16" rx="3" style="fill:var(--c-e6ebf2,#e6ebf2)"/>
+<rect x="60" y="182" width="240" height="22" rx="5" style="fill:var(--c-16294a,#16294a)"/><rect x="68" y="190" width="70" height="3" rx="1.5" style="fill:var(--c-7fd6a0,#7fd6a0)"/><rect x="144" y="190" width="90" height="3" rx="1.5" style="fill:var(--c-9fb1c9,#9fb1c9)"/></svg></div>
+  </div>
+</section>
+<section class="cta-dark">
+  <div class="wrap narrow">
+    <h2>Ready to turn your next lecture into notes?</h2>
+    <p>Bring a YouTube link with captions and your own Gemini key. The Word file is ready when the progress bar reaches 100%.</p>
+    <a class="btn gold lg" href="/app">Start converting</a>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+</body>
+</html>
